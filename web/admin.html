@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Gestor Juntô Doces</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Yellowtail&display=swap">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/admin.css">
+</head>
+<body class="admin">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="heart" viewBox="0 0 24 24"><path d="M12 21 4.2 13.2C1.6 10.6 1.9 6.6 4.7 4.8c2.3-1.4 5-.7 6.6 1.3L12 7l.7-.9c1.6-2 4.3-2.7 6.6-1.3 2.8 1.8 3.1 5.8.5 8.4z"/></symbol>
+</svg>
+
+<div class="awrap">
+  <section id="login" class="narrow" hidden></section>
+  <section id="panel" hidden>
+    <header class="atop">
+      <div class="abrand"><b>Juntô</b><span>Gestor de pedidos</span></div>
+      <div class="atools">
+        <span class="status" id="sstatus"></span>
+        <button type="button" class="btn sm alt" id="soundBtn" aria-pressed="false">Som desligado</button>
+        <a class="btn sm alt" href="index.html" target="_blank" rel="noopener">Ver cardápio</a>
+        <button type="button" class="btn sm alt" id="logoutBtn">Sair</button>
+      </div>
+    </header>
+    <nav class="atabs" aria-label="Seções">
+      <button type="button" data-tab="pedidos" aria-pressed="true">Pedidos <span class="dot" id="newDot" hidden></span></button>
+      <button type="button" data-tab="cardapio" aria-pressed="false">Cardápio</button>
+      <button type="button" data-tab="loja" aria-pressed="false">Loja</button>
+    </nav>
+    <div id="t-pedidos"></div>
+    <div id="t-cardapio" hidden></div>
+    <div id="t-loja" hidden></div>
+  </section>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+<script src="js/config.js"></script>
+<script src="js/api.js"></script>
+<script src="js/admin.js"></script>
+</body>
+</html>

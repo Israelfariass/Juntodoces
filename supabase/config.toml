@@ -1,0 +1,15 @@
+# Configuração das Edge Functions (Supabase CLI).
+# Funções públicas (o cliente do site chama sem login) ficam com verify_jwt = false.
+# O painel da loja usa login, então admin-orders confere o usuário dentro da função.
+
+[functions.create-order]
+verify_jwt = false
+
+[functions.track-order]
+verify_jwt = false
+
+[functions.mp-webhook]
+verify_jwt = false
+
+[functions.admin-orders]
+verify_jwt = true
