@@ -44,7 +44,7 @@ juntodoces/
 - Capa, logo, status (aberto até que horas, ou quando abre), tempo de entrega, taxa e pedido mínimo.
 - Busca e categorias que acompanham a rolagem.
 - Janela do produto com grupos de complementos: obrigatórios ou opcionais, com mínimo, máximo e
-  quantidade inclusa (por exemplo, 3 acompanhamentos no açaí e extras cobrados). Campo de observação.
+  quantidade inclusa (açaí: 3 acompanhamentos grátis; Barca P: 5 grátis; adicionais pagos à parte). Campo de observação.
 - Sacola, finalização (entrega ou retirada, Pix, cartão na entrega ou dinheiro) e acompanhamento só com o WhatsApp.
 
 ## O que a loja vê (`admin.html`)

@@ -62,11 +62,15 @@
   }
 
   /* ---------- cardápio de demonstração (igual ao seed.sql) ---------- */
-  var TOPS = ['Nutella', 'Creme de avelã', 'Creme de kinder', 'Creme de leitinho', 'Leite em pó', 'Paçoca', 'Doce de leite', 'Leite condensado', 'Confete', 'Banana', 'Coco ralado', 'Morango'];
+  var ACOMP = ['Amendoim','Granola','Confete','Coco ralado','Leite em pó','Doce de leite','Paçoca','Cookies','Leite condensado','Creme de kinder','Creme de avelã','Creme de morango'];
+  var ADIC = [['Stikadinho',300],['Nutella',500],['Ovomaltine',300],['Creme de leitinho',300]];
   function localGroups() {
+    var free = function (pre) { return ACOMP.map(function (n, i) { return { id: pre + i, name: n, price: 0, active: true }; }); };
     return {
-      acomp: { id: 'g-acomp', title: 'Acompanhamentos', hint: '3 livres, adicionais R$ 3,00 cada', min: 0, max: 12, free: 3,
-        options: TOPS.map(function (n, i) { return { id: 'o-top-' + i, name: n, price: 3, active: true }; }) }
+      acomp: { id: 'g-acomp', title: 'Acompanhamentos (escolha até 3, grátis)', min: 0, max: 3, free: 3, options: free('o-') },
+      barca: { id: 'g-acomp-barca', title: 'Acompanhamentos da barca (escolha até 5, grátis)', min: 0, max: 5, free: 5, options: free('ob-') },
+      adic: { id: 'g-adicional', title: 'Adicionais pagos', min: 0, max: 4, free: 0,
+        options: ADIC.map(function (a, i) { return { id: 'o-ad-' + i, name: a[0], price: a[1] / 100, active: true }; }) }
     };
   }
   var LOCAL_HOURS = { 0: ['14:00', '23:00'], 1: ['14:00', '23:00'], 2: ['14:00', '23:00'], 3: ['14:00', '23:00'], 4: ['14:00', '23:00'], 5: ['14:00', '23:30'], 6: ['14:00', '23:30'] };
@@ -86,10 +90,11 @@
     var st = { name: 'Juntô Doces', whatsapp: C.lojaWhatsapp || '', mode: 'aberta', hours: LOCAL_HOURS, fee: 5, min: 15, etaMin: 30, etaMax: 45 };
     Object.keys(ov.settings || {}).forEach(function (k) { st[k] = ov.settings[k]; });
     var cats = [{ id: 'acai', name: 'Açaí', products: [
-      P('acai-300', 'Açaí 300 ml', 'Açaí cremoso com 3 acompanhamentos livres.', 18, [g.acomp]),
-      P('acai-400', 'Açaí 400 ml', 'Açaí cremoso com 3 acompanhamentos livres.', 20, [g.acomp]),
-      P('acai-500', 'Açaí 500 ml', 'Açaí cremoso com 3 acompanhamentos livres.', 24, [g.acomp]),
-      P('acai-700', 'Açaí 700 ml', 'Açaí cremoso com 3 acompanhamentos livres.', 30, [g.acomp]),
+      P('acai-300', 'Açaí 300 ml', 'Açaí cremoso com 3 acompanhamentos livres.', 18, [g.acomp, g.adic]),
+      P('acai-400', 'Açaí 400 ml', 'Açaí cremoso com 3 acompanhamentos livres.', 20, [g.acomp, g.adic]),
+      P('acai-500', 'Açaí 500 ml', 'Açaí cremoso com 3 acompanhamentos livres.', 24, [g.acomp, g.adic]),
+      P('acai-700', 'Açaí 700 ml', 'Açaí cremoso com 3 acompanhamentos livres.', 30, [g.acomp, g.adic]),
+      P('barca-p', 'Barca P', 'Barca de açaí com 5 acompanhamentos grátis.', 42, [g.barca, g.adic]),
       P('combo-abertura', 'Combo Promo de Abertura', 'Dois copos de 440 ml. Diga os acompanhamentos de cada copo nas observações.', 34, [])] }];
     ov.cats.forEach(function (c) { cats.push({ id: c.id, name: c.name, products: [] }); });
     var byCat = {}; cats.forEach(function (c) { byCat[c.id] = c; });
