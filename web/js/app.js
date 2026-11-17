@@ -99,14 +99,15 @@
     $('.catnav').hidden = catalog.categories.filter(function (c) { return c.products.length; }).length < 2;
     var fc = $('#fcats'); if (fc) fc.textContent = catalog.categories.filter(function (c) { return c.products.length; }).map(function (c) { return c.name; }).join(' · ');
     $('#catin').innerHTML = cats.map(function (c, i) { return '<a class="tab" href="#cat-' + esc(c.id) + '" data-cat="' + esc(c.id) + '"' + (i === 0 ? ' aria-current="true"' : '') + '>' + esc(c.name) + '</a>'; }).join('');
+    var showFlyer = !search && (window.JD_CONFIG || {}).mostrarFlyer !== false;
     $('#plist').innerHTML = (cats.length ? cats.map(function (c) {
       return '<section class="csec" id="sec-' + esc(c.id) + '"><h2>' + esc(c.name) + '</h2><div class="pgrid">' + c.products.map(productCard).join('') + '</div></section>';
     }).join('') : '<div class="card empty" style="margin-top:16px">Nada encontrado para "' + esc(search) + '".</div>') +
-      '<section class="menu-highlight" aria-labelledby="flyer-title"><div><h2 id="flyer-title">Nosso cardápio em destaque</h2>' +
+      (showFlyer ? (      '<section class="menu-highlight" aria-labelledby="flyer-title"><div><h2 id="flyer-title">Nosso cardápio em destaque</h2>' +
       '<p>Um pouquinho do carinho que vai em cada pedido. Toque na imagem para abrir o material completo.</p>' +
-      '<small>Os preços atuais são os exibidos nos produtos acima.</small></div>' +
+      '<small>Os valores podem mudar. Vale o preço mostrado nos produtos acima.</small></div>' +
       '<a href="assets/cardapio-divulgacao.jpg" target="_blank" rel="noopener" aria-label="Abrir o cardápio promocional completo">' +
-      '<img src="assets/cardapio-divulgacao.jpg" alt="Cardápio promocional da Juntô Doces com tamanhos de açaí, adicionais e combo" loading="lazy"></a></section>';
+      '<img src="assets/cardapio-divulgacao.jpg" alt="Cardápio promocional da Juntô Doces com tamanhos de açaí, adicionais e combo" loading="lazy"></a></section>') : '');
   }
   var spyTimer;
   function spy() {
