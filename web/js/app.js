@@ -335,8 +335,8 @@
         '\nTotal: ' + brl(o.total) + '\n' + (o.tipo === 'entrega' ? 'Entrega: ' + f.address : 'Retirada na loja') + '\nPagamento: ' + PAY[o.pay] + (f.notes ? '\nObs.: ' + f.notes : '');
       var pixInfo = '';
       if (o.pay === 'pix') pixInfo = justOrdered.pix ? pixBox(justOrdered.pix) : '<p>Vamos te enviar a chave Pix no WhatsApp.</p>';
-      banner = '<div class="banner">' + heart + '<div><strong>Pedido ' + esc(o.code) + ' feito!</strong><p>Vamos avisar cada etapa no WhatsApp ' + esc(fmtPhone(o.phone)) + '.</p>' + pixInfo +
-        '<div class="acts"><a class="btn sm" href="' + waLink(catalog.store.whatsapp, msg) + '" target="_blank" rel="noopener">Abrir conversa no WhatsApp</a></div></div></div>';
+      banner = '<div class="banner">' + heart + '<div><strong>Pedido ' + esc(o.code) + ' feito!</strong><p>Acompanhe cada etapa aqui, só com o seu WhatsApp ' + esc(fmtPhone(o.phone)) + '. A loja também pode te chamar por lá.</p>' + pixInfo +
+        '<div class="acts"><a class="btn sm" href="' + waLink(catalog.store.whatsapp, msg) + '" target="_blank" rel="noopener">Falar com a loja no WhatsApp</a></div></div></div>';
     }
     el.innerHTML = backbar('Acompanhar pedido') + '<p class="sub">Digite o WhatsApp que você usou no pedido.</p>' +
       '<div class="stack">' + banner +
