@@ -84,16 +84,15 @@
     var ov = getOv();
     var g = localGroups(), byId = {}, all = [];
     Object.keys(g).forEach(function (k) { g[k].options.forEach(function (o) { o.active = !ov.optOff[o.id]; }); byId[g[k].id] = g[k]; all.push(g[k]); });
-    var P = function (id, name, desc, price, groups) {
-      return { id: id, name: name, desc: desc, price: ov.price[id] != null ? ov.price[id] : price, image: '', paused: !!ov.paused[id], active: true, groups: groups || [] };
+    var P = function (id, name, desc, price, groups, image) {
+      return { id: id, name: name, desc: desc, price: ov.price[id] != null ? ov.price[id] : price, image: image || '', paused: !!ov.paused[id], active: true, groups: groups || [] };
     };
     var st = { name: 'Juntô Doces', whatsapp: C.lojaWhatsapp || '', mode: 'aberta', hours: LOCAL_HOURS, fee: 5, min: 15, etaMin: 30, etaMax: 45 };
     Object.keys(ov.settings || {}).forEach(function (k) { st[k] = ov.settings[k]; });
     var cats = [{ id: 'acai', name: 'Açaí', products: [
-      P('acai-300', 'Açaí 300 ml', 'Açaí cremoso com 3 acompanhamentos livres.', 18, [g.acomp, g.adic]),
-      P('acai-400', 'Açaí 400 ml', 'Açaí cremoso com 3 acompanhamentos livres.', 20, [g.acomp, g.adic]),
-      P('acai-500', 'Açaí 500 ml', 'Açaí cremoso com 3 acompanhamentos livres.', 24, [g.acomp, g.adic]),
-      P('acai-700', 'Açaí 700 ml', 'Açaí cremoso com 3 acompanhamentos livres.', 30, [g.acomp, g.adic]),
+      P('acai-330', 'Açaí 330 ml', 'Açaí cremoso com 3 acompanhamentos livres.', 18, [g.acomp, g.adic], 'assets/acai-330.jpg'),
+      P('acai-440', 'Açaí 440 ml', 'Açaí cremoso com 3 acompanhamentos livres.', 20, [g.acomp, g.adic], 'assets/acai-440.jpg'),
+      P('acai-550', 'Açaí 550 ml', 'Açaí cremoso com 3 acompanhamentos livres.', 24, [g.acomp, g.adic], 'assets/acai-550.jpg'),
       P('barca-p', 'Barca P', 'Barca de açaí com 5 acompanhamentos grátis.', 42, [g.barca, g.adic]),
       P('combo-abertura', 'Combo Promo de Abertura', 'Dois copos de 440 ml. Diga os acompanhamentos de cada copo nas observações.', 34, [])] }];
     ov.cats.forEach(function (c) { cats.push({ id: c.id, name: c.name, products: [] }); });

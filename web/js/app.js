@@ -133,7 +133,7 @@
     p.groups.forEach(function (g) { M.sel[g.id] = []; });
     var open = isOpen();
     var body = '<button type="button" class="mclose" data-mclose aria-label="Fechar">×</button><div class="mbody">' +
-      '<div class="mhero">' + (p.image ? '<img alt="" src="' + esc(p.image) + '">' : whisk) + '</div>' +
+      '<div class="mhero' + (p.image ? ' has-img' : '') + '">' + (p.image ? '<img alt="" src="' + esc(p.image) + '">' : whisk) + '</div>' +
       '<h2>' + esc(p.name) + '</h2><p class="mdesc">' + esc(p.desc) + '</p>' +
       p.groups.map(function (g) {
         var single = g.max === 1;

@@ -114,7 +114,9 @@ h3{font:800 12px/1 var(--body);letter-spacing:.16em;text-transform:uppercase;col
 @media (min-width:720px){.modal{left:50%;top:50%;bottom:auto;right:auto;transform:translate(-50%,-50%);width:520px;max-height:88vh;border-radius:24px}}
 .mbody{overflow:auto;padding:0 16px 16px;flex:1;min-height:0}
 .mhero{height:150px;margin:0 -16px;background:var(--surface-2);display:grid;place-items:center;color:var(--brand-2);overflow:hidden}
-.mhero img{width:100%;height:100%;object-fit:cover}
+.mhero img{width:100%;height:100%;object-fit:cover;object-position:50% 38%}
+.mhero.has-img{height:min(62vw,300px)}
+.pthumb img{object-position:50% 20%}
 .mhero .w{width:54px;height:70px}
 .mclose{position:absolute;top:10px;right:10px;z-index:2;width:40px;height:40px;border-radius:50%;border:0;background:var(--surface);color:var(--ink);font-size:22px;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.2)}
 .mbody h2{margin:14px 0 2px;font-size:32px}

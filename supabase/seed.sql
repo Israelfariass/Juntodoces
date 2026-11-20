@@ -66,20 +66,21 @@ on conflict (id) do update set group_id = excluded.group_id, name = excluded.nam
 delete from public.options where group_id = 'g-acomp' and id not in ('o-amendoim', 'o-granola', 'o-confete', 'o-coco', 'o-leiteempo', 'o-docedeleite', 'o-pacoca', 'o-cookies', 'o-leitecond', 'o-kinder', 'o-avela', 'o-cremmorango');
 
 -- Produtos -----------------------------------------------------------------------
-insert into public.products (id, category_id, name, description, price_cents, sort) values
-  ('acai-300', 'acai', 'Açaí 300 ml', 'Açaí cremoso com 3 acompanhamentos livres.', 1800, 1),
-  ('acai-400', 'acai', 'Açaí 400 ml', 'Açaí cremoso com 3 acompanhamentos livres.', 2000, 2),
-  ('acai-500', 'acai', 'Açaí 500 ml', 'Açaí cremoso com 3 acompanhamentos livres.', 2400, 3),
-  ('acai-700', 'acai', 'Açaí 700 ml', 'Açaí cremoso com 3 acompanhamentos livres.', 3000, 4),
-  ('barca-p', 'acai', 'Barca P', 'Barca de açaí com 5 acompanhamentos grátis.', 4200, 5),
-  ('combo-abertura', 'acai', 'Combo Promo de Abertura', 'Dois copos de 440 ml. Diga os acompanhamentos de cada copo nas observações.', 3400, 6)
+-- remove os tamanhos antigos (300/400/500/700 ml)
+delete from public.products where id in ('acai-300', 'acai-400', 'acai-500', 'acai-700');
+
+insert into public.products (id, category_id, name, description, price_cents, image_url, sort) values
+  ('acai-330', 'acai', 'Açaí 330 ml', 'Açaí cremoso com 3 acompanhamentos livres.', 1800, 'assets/acai-330.jpg', 1),
+  ('acai-440', 'acai', 'Açaí 440 ml', 'Açaí cremoso com 3 acompanhamentos livres.', 2000, 'assets/acai-440.jpg', 2),
+  ('acai-550', 'acai', 'Açaí 550 ml', 'Açaí cremoso com 3 acompanhamentos livres.', 2400, 'assets/acai-550.jpg', 3),
+  ('barca-p', 'acai', 'Barca P', 'Barca de açaí com 5 acompanhamentos grátis.', 4200, null, 5),
+  ('combo-abertura', 'acai', 'Combo Promo de Abertura', 'Dois copos de 440 ml. Diga os acompanhamentos de cada copo nas observações.', 3400, null, 6)
 on conflict (id) do update set category_id = excluded.category_id, name = excluded.name,
-  description = excluded.description, price_cents = excluded.price_cents, sort = excluded.sort;
+  description = excluded.description, price_cents = excluded.price_cents, image_url = excluded.image_url, sort = excluded.sort;
 
 insert into public.product_groups (product_id, group_id, sort) values
-  ('acai-300', 'g-acomp', 1), ('acai-300', 'g-adicional', 2),
-  ('acai-400', 'g-acomp', 1), ('acai-400', 'g-adicional', 2),
-  ('acai-500', 'g-acomp', 1), ('acai-500', 'g-adicional', 2),
-  ('acai-700', 'g-acomp', 1), ('acai-700', 'g-adicional', 2),
+  ('acai-330', 'g-acomp', 1), ('acai-330', 'g-adicional', 2),
+  ('acai-440', 'g-acomp', 1), ('acai-440', 'g-adicional', 2),
+  ('acai-550', 'g-acomp', 1), ('acai-550', 'g-adicional', 2),
   ('barca-p', 'g-acomp-barca', 1), ('barca-p', 'g-adicional', 2)
 on conflict do nothing;
